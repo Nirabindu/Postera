@@ -1,0 +1,24 @@
+services:
+  web:
+    build:
+      context: .    # tell docker where to see in project folder here root , then copy will copy from that root
+      dockerfile: Dockerfile
+    image: web:fastapi  # given name to the image
+    container_name: fastapi_web_app
+    restart: unless-stopped
+    #we used copy 
+    # volumes:
+    #   - ./src:/app/src
+    #   - ./migrations:/app/migrations
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    networks:
+      - postera_networks
+
+
+#attaching service to that networks
+networks:
+  postera_networks:
+    driver: bridge

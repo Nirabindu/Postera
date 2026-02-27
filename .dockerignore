@@ -1,0 +1,13 @@
+.git
+__pycache__
+.env
+.venv
+.vscode
+.ruff_cache
+.gitignore
+.pre-commit-config.yaml
+.secret.baseline
+*.pyc
+dist
+build
+*.log
