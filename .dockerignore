@@ -1,6 +1,7 @@
 .git
 __pycache__
-.env
+.env.prod
+.env.dev
 .venv
 .vscode
 .ruff_cache

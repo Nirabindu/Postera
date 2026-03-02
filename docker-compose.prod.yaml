@@ -6,7 +6,7 @@ services:
     image: web:fastapi  # given name to the image
     container_name: fastapi_web_app
     restart: unless-stopped
-    #we used copy 
+    #we used copy only in prod no volumes mount needed.
     # volumes:
     #   - ./src:/app/src
     #   - ./migrations:/app/migrations
@@ -17,6 +17,18 @@ services:
     networks:
       - postera_networks
 
+  postera_db:
+    image: postgres:17.9-alpine3.23
+    restart: always
+    env_file:
+      - .env.prod
+    volumes:
+      - postera_data:/var/lib/postgresql/data
+
+
+# create by docker if not there
+volumes:
+  postera_data:
 
 #attaching service to that networks
 networks:
